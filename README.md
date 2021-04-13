@@ -1,5 +1,5 @@
-# WooCommerce 
-- Add Track & Trace URL to the order confirmation email
+# Woocommerce Bolder Elements - Myparcel Compatibility
+- This plugin add's an extra column to the Bolder Elements Table Rates Plugin where you can define MyParcel shipment types: Digital Stamp, Mailbox, Package etc
 
 ## Manual
 
