@@ -24,9 +24,6 @@ class WPO_WC_BETRS_Compatibility {
 		add_filter( 'betrs_processed_rate', array ( $this, 'betrs_add_custom_data_package_type_array' ), 10, 4 );
 		// ADD THE CUSTOM FIELD TO THE META DATA
 		add_filter( 'betrs_shipping_rate_meta', array ( $this, 'betrs_modify_package_type_rate_meta' ), 10, 2 );
-		
-		// DISPLAY CUSTOM FIELD FOR DEBUGGING
-		//add_action( 'woocommerce_after_shipping_rate', 'betrs_display_package_type' ), 10, 2 );
 	}
 
 	/**
@@ -121,28 +118,6 @@ class WPO_WC_BETRS_Compatibility {
 		}
 
 		return $meta_data;
-	}
-
-	/**
-	 * Display custom field for debugging
-	 *
-	 * @return void
-	 */
-	function betrs_display_package_type( $method, $index ) {
-		
-		// array of package types
-		$package_types = array( 
-			'package' => 'Pakket',
-			'mailbox' => 'Brievenbuspakje',
-			'letter' => 'Ongefrankeerd',
-			'digital_stamp' => 'Digitale Postzegel'
-		);
-		
-		$meta_data = $method->get_meta_data();
-		
-		if( isset( $meta_data['package_type'] ) ) {
-			echo '<p class="betrs_option_package_type">Verzenden&nbsp;als&nbsp;' . strtolower(stripslashes( sanitize_text_field( $package_types[$meta_data['package_type']] ) ) ) . '</p>';
-		}
 	}
 
 }

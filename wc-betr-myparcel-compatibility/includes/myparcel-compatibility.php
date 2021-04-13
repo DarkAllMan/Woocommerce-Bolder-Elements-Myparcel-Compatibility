@@ -18,6 +18,9 @@ class WPO_WC_MYPARCEL_Compatibility {
 		add_filter( 'wc_myparcel_order_delivery_options', array ( $this, 'set_Myparcel_Delivery_Options' ), 10, 2 );		
 		// SHOW MYPARCEL CHECKOUT OPTIONS ONY ON PACKAGE TYPE
 		add_filter( 'wc_myparcel_show_delivery_options', array ( $this, 'show_myparcel_checkout_options' ), 10, 1 );
+		
+		// DISPLAY CUSTOM FIELD FOR DEBUGGING
+		add_action( 'woocommerce_review_order_before_submit', array ( $this, 'betrs_display_package_type' ), 10 );		
 	}
 	
 	
@@ -87,6 +90,20 @@ class WPO_WC_MYPARCEL_Compatibility {
 		}
 		return $show;
 	}
+	
+	/**
+	 * Display custom field for debugging
+	 *
+	 * @return void
+	 */
+	function betrs_display_package_type() {
+		
+		$package_type = $this->getCurrentPackageTypeFromCart();
+		
+		if( current_user_can('administrator') ) {
+			echo strtolower($package_type);
+		}
+	}	
 
 }
 

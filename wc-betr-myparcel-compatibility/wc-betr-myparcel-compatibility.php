@@ -135,10 +135,6 @@ class WPO_WC_BETR_MYPARCEL {
 		echo $message;
 	}	
 
-
-
-	
-
 } // class WPO_WC_BETR_MYPARCEL
 
 endif; // class_exists
