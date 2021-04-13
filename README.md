@@ -3,7 +3,9 @@
 
 ## Manual
 
+
 ## Installation
+Download and install this plugin. Then go to your table rates and set the package types.
 
 
 ## Contributing
