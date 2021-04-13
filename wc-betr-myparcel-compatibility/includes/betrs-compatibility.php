@@ -1,5 +1,4 @@
 <?php
-use WPO\WC\MyParcel\Compatibility\WC_Core as WCX;
 
 /**
  * Main plugin functions
@@ -9,20 +8,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-if ( !class_exists( 'WPO_WC_BETRS_Compatibility' ) ) :
+if ( !class_exists( 'DAM_BC_BETRS' ) ) :
 
-class WPO_WC_BETRS_Compatibility {
+class DAM_BC_BETRS {
 	
 	function __construct()	{
-		// ADD COLUMN TO THE TABLE OF RATES
+		// add column to the table of rates
 		add_filter( 'betrs_shipping_table_columns', array ( $this, 'betrs_add_package_type' ), 10, 1 );
-		// ADD FORM FIELD TO CUSTOM COLUMN IN THE TABLE OF RATES
+		// add form field to custom column in the table of rates
 		add_filter( 'betrs_shipping_table_column_packagetype', array ( $this, 'betrs_add_package_type_data' ), 10, 2 );
-		// SAVE FORM FIELD FROM CUSTOM COLUMN IN THE TABLE OF RATES
+		// save form field from custom column in the table of rates
 		add_filter( 'betrs_shipping_table_save_row', array ( $this, 'betrs_save_package_type_data' ), 10, 3 );
-		// FIND THE CUSTOM FIELD VALUE WHEN CALCULATING SHIPPING
+		// find the custom field value when calculating shipping
 		add_filter( 'betrs_processed_rate', array ( $this, 'betrs_add_custom_data_package_type_array' ), 10, 4 );
-		// ADD THE CUSTOM FIELD TO THE META DATA
+		// add the custom field to the meta data
 		add_filter( 'betrs_shipping_rate_meta', array ( $this, 'betrs_modify_package_type_rate_meta' ), 10, 2 );
 	}
 
@@ -54,7 +53,7 @@ class WPO_WC_BETRS_Compatibility {
 		// find previously saved value
 		$saved = ( isset( $item['package_type'] ) ) ? sanitize_text_field( $item['package_type'] ) : '';
 		
-		// HOW TO GET PACKAGE TYPES FROM MYPARCEL
+		// get allowed shipment types from MyParcel
 		$package_types = array_combine(WCMP_Data::getPackageTypes(), WCMP_Data::getPackageTypesHuman());
 
 		// setup form field
@@ -124,4 +123,4 @@ class WPO_WC_BETRS_Compatibility {
 
 endif; // class_exists
 
-return new WPO_WC_BETRS_Compatibility();
+return new DAM_BC_BETRS();

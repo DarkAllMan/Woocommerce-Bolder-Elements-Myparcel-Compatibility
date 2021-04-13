@@ -1,6 +1,4 @@
 <?php
-use WPO\WC\MyParcel\Compatibility\WC_Core as WCX;
-
 /**
  * Main plugin functions
  */
@@ -9,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-if ( !class_exists( 'WPO_WC_MYPARCEL_Compatibility' ) ) :
+if ( !class_exists( 'DAM_BC_MYPARCEL' ) ) :
 
-class WPO_WC_MYPARCEL_Compatibility {
+class DAM_BC_MYPARCEL {
 	
 	function __construct()	{
 		// USE MYPARCEL PACKAGE TYPE SET IN BETRS AS PACKAGE TYPE IN SAVED ORDER
@@ -53,14 +51,8 @@ class WPO_WC_MYPARCEL_Compatibility {
 
 		$shipping_methods = $order->get_items( 'shipping' );
 		foreach ( $shipping_methods as $method_id => $shipping_rate ){
-			$meta_data = $shipping_rate->get_meta_data();
-			foreach($meta_data AS $data){
-				$meta = $data->get_data();
-				foreach($meta AS $key => $value){
-					if($key=='key' && $value=='package_type'){
-						$package_type = $meta['value'];
-					}
-				}			
+			foreach ( $order->get_items( 'shipping' ) as $item_id => $shipping_method ){
+				$package_type = $shipping_method->get_meta('package_type');
 			}
 		}
 		return $package_type;
@@ -109,4 +101,4 @@ class WPO_WC_MYPARCEL_Compatibility {
 
 endif; // class_exists
 
-return new WPO_WC_MYPARCEL_Compatibility();
+return new DAM_BC_MYPARCEL();

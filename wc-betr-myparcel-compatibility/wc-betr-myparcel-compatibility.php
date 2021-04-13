@@ -10,13 +10,15 @@
  * Domain Path: /languages
  */
 
+namespace DAM\WC\MyParcel
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-if ( !class_exists( 'WPO_WC_BETR_MYPARCEL' ) ) :
+if ( !class_exists( 'BETRS_Compatibility' ) ) :
 
-class WPO_WC_BETR_MYPARCEL {
+class BETRS_Compatibility {
 
 	public $version = '1.1';
 
@@ -145,8 +147,8 @@ endif; // class_exists
  * @since  2.1
  * @return WooCommerce
  */
-function WPO_WCBETRSMP() {
-	return WPO_WC_BETR_MYPARCEL::instance();
+function DAM_BETRS_Compatibility() {
+	return BETRS_Compatibility::instance();
 }
 
-WPO_WCBETRSMP(); // load plugin
+DAM_BETRS_Compatibility(); // load plugin
