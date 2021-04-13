@@ -10,7 +10,7 @@
  * Domain Path: /languages
  */
 
-namespace DAM\WC\MyParcel
+namespace DAM\WC\MyParcel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly

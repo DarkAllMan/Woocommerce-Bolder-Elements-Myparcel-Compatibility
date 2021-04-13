@@ -49,12 +49,17 @@ class DAM_BC_MYPARCEL {
 		// default package type
 		$package_type = 'package';
 
-		$shipping_methods = $order->get_items( 'shipping' );
-		foreach ( $shipping_methods as $method_id => $shipping_rate ){
-			foreach ( $order->get_items( 'shipping' ) as $item_id => $shipping_method ){
-				$package_type = $shipping_method->get_meta('package_type');
+		foreach ( $order->get_items( 'shipping' ) as $item_id => $shipping_method ){
+			if ( strpos($shipping_method->get_method_id(), 'local_pickup') !== false ) {
+				$package_type = 'letter';
+			} else {
+				$order_package_type = $shipping_method->get_meta('package_type');
+				if ( ! empty( $order_package_type ) ) {
+					$package_type = $order_package_type;
+				}
 			}
 		}
+
 		return $package_type;
 	}
 
