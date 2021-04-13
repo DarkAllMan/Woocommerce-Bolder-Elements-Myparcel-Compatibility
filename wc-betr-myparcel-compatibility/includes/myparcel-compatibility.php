@@ -15,7 +15,7 @@ class WPO_WC_MYPARCEL_Compatibility {
 	
 	function __construct()	{
 		// USE MYPARCEL PACKAGE TYPE SET IN BETRS AS PACKAGE TYPE IN SAVED ORDER
-		add_filter( 'wc_myparcel_delivery_options', array ( $this, 'set_Myparcel_Delivery_Options' ), 10, 2 );
+		add_filter( 'wc_myparcel_order_delivery_options', array ( $this, 'set_Myparcel_Delivery_Options' ), 10, 2 );		
 		// SHOW MYPARCEL CHECKOUT OPTIONS ONY ON PACKAGE TYPE
 		add_filter( 'wc_myparcel_show_delivery_options', array ( $this, 'show_myparcel_checkout_options' ), 10, 1 );
 	}
