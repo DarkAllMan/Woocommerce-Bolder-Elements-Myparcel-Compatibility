@@ -69,7 +69,10 @@ class WPO_WC_MYPARCEL_Compatibility {
 	 * @return array
 	 */
 	public function set_Myparcel_Delivery_Options( $deliveryOptions, $order ){	
-		$deliveryOptions->package_type = $this->getCurrentPackageTypeFromOrder($order);
+		$data = [
+			'package_type' => $this->getCurrentPackageTypeFromOrder($order)
+		];
+		$deliveryOptions = new WCMP_DeliveryOptionsFromOrderAdapter($deliveryOptions, $data);
 		return $deliveryOptions;
 	}
 
