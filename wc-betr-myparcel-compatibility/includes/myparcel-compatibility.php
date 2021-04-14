@@ -18,7 +18,7 @@ class DAM_BC_MYPARCEL {
 		add_filter( 'wc_myparcel_show_delivery_options', array ( $this, 'show_myparcel_checkout_options' ), 10, 1 );
 		
 		// DISPLAY CUSTOM FIELD FOR DEBUGGING
-		add_action( 'woocommerce_review_order_before_submit', array ( $this, 'betrs_display_package_type' ), 10 );		
+		//add_action( 'woocommerce_review_order_before_submit', array ( $this, 'betrs_display_package_type' ), 10 );		
 	}
 	
 	
@@ -28,6 +28,8 @@ class DAM_BC_MYPARCEL {
 	 * @return string
 	 */
 	public function getCurrentPackageTypeFromCart(){
+		$package_type = 'package';
+		
 		// The chosen shipping method (string) - Output the Shipping method rate ID
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' )[0];
 
@@ -36,7 +38,12 @@ class DAM_BC_MYPARCEL {
 		
 		$method = $shipping_methods[$chosen_shipping_methods];
 		$meta_data = $method->get_meta_data();
-		$package_type = (array_key_exists('package_type',$meta_data)) ? $meta_data['package_type'] : false;
+		
+		if ( strpos($chosen_shipping_methods, 'local_pickup') !== false ) {
+			$package_type = 'letter';
+		} else {
+			$package_type = (array_key_exists('package_type',$meta_data)) ? $meta_data['package_type'] : $package_type;
+		}
 		return $package_type;
 	}
 
@@ -98,7 +105,7 @@ class DAM_BC_MYPARCEL {
 		$package_type = $this->getCurrentPackageTypeFromCart();
 		
 		if( current_user_can('administrator') ) {
-			echo strtolower($package_type);
+			echo 'package_type: ' . strtolower($package_type);
 		}
 	}	
 
