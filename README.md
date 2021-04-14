@@ -1,4 +1,4 @@
-# Woocommerce Bolder Elements - Myparcel Compatibility
+# Woocommerce Bolder Elements Table Rates Shipping - Myparcel Compatibility
 - This plugin add's an extra column to the Bolder Elements Table Rates Plugin where you can define MyParcel shipment types: Digital Stamp, Mailbox, Package etc
 
 ## Screenshots
