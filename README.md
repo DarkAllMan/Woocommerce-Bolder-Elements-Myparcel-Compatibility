@@ -6,8 +6,8 @@
 ![afbeelding](https://user-images.githubusercontent.com/1582343/114666365-73998800-9cfe-11eb-8728-c4ae507ba3cf.png)
 
 ## Installation & Settings
-Requires Woocommerce MyParcel (https://nl.wordpress.org/plugins/woocommerce-myparcel/)
-Requires Bolder Elements Table Rates (https://codecanyon.net/item/table-rate-shipping-for-woocommerce/3796656)
+- Requires Woocommerce MyParcel (https://nl.wordpress.org/plugins/woocommerce-myparcel/)
+- Requires Bolder Elements Table Rates version > 4.2.1 [NOT YET RELEASED] (https://codecanyon.net/item/table-rate-shipping-for-woocommerce/3796656).
 Download and install this plugin. Then go to your table rates. A new column should be added where you can define a shipment type per row.
 When calculating shipping costs the selected row will define the shipment type in MyParcel.
 When Local Pickup is chosen, type is set to 'letter' (NL = ongefrankeerd)
