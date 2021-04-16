@@ -6,7 +6,7 @@
  * Version: 1.1
  * Author: Randall Kam
  * Author URI: https://www.randall.nl
- * Text Domain: wpo_wcbetrmp
+ * Text Domain: dam_betrscompat
  * Domain Path: /languages
  */
 
@@ -41,8 +41,8 @@ class BETRS_Compatibility {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->define( 'WPO_WC_BETR_MYPARCEL_VERSION', $this->version );
-		$this->define( 'WPO_WC_BETR_MYPARCEL_BASENAME', plugin_basename( __FILE__ ) );
+		$this->define( 'BETRS_COMPATIBILITY_VERSION', $this->version );
+		$this->define( 'BETRS_COMPATIBILITY_BASENAME', plugin_basename( __FILE__ ) );
 		
 		add_action( 'init', array( $this, 'load_classes' ) );
 	}
@@ -118,7 +118,7 @@ class BETRS_Compatibility {
 	 */
 	 
 	public function need_myparcel() {
-		$error = sprintf( __( 'Woocommerce Bolder Elements - Myparcel Compatibility requires %sMyParcel%s to be installed & activated!' , 'wpo_wcbetrmp' ), '<a href="http://wordpress.org/extend/plugins/woocommerce-myparcel/">', '</a>' );
+		$error = sprintf( __( 'Woocommerce Bolder Elements - Myparcel Compatibility requires %sMyParcel%s to be installed & activated!' , 'dam_betrscompat' ), '<a href="http://wordpress.org/extend/plugins/woocommerce-myparcel/">', '</a>' );
 
 		$message = '<div class="error"><p>' . $error . '</p></div>';
 	
@@ -130,14 +130,14 @@ class BETRS_Compatibility {
 	 */
 	 
 	public function need_betrs() {
-		$error = sprintf( __( 'Woocommerce Bolder Elements - Myparcel Compatibility requires %sBolder Elements Table Rates%s to be installed & activated!' , 'wpo_wcbetrmp' ), '<a href="https://codecanyon.net/item/table-rate-shipping-for-woocommerce/3796656/">', '</a>' );
+		$error = sprintf( __( 'Woocommerce Bolder Elements - Myparcel Compatibility requires %sBolder Elements Table Rates%s to be installed & activated!' , 'dam_betrscompat' ), '<a href="https://codecanyon.net/item/table-rate-shipping-for-woocommerce/3796656/">', '</a>' );
 
 		$message = '<div class="error"><p>' . $error . '</p></div>';
 	
 		echo $message;
 	}	
 
-} // class WPO_WC_BETR_MYPARCEL
+} // class BETRS_Compatibility
 
 endif; // class_exists
 
